@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用途制限 暗記アプリ</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #f4f6f8;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 1.2rem;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            font-size: 0.85rem;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 6px;
+            text-align: center;
+        }
+        th {
+            background-color: #004d40;
+            color: white;
+            font-size: 0.75rem;
+        }
+        /* マスク（隠す）スタイルの初期値 */
+        .mask {
+            background-color: #333;
+            color: #333;
+            cursor: pointer;
+            user-select: none;
+            border-radius: 4px;
+            transition: background-color 0.2s;
+        }
+        /* タップして正解を表示したときのスタイル */
+        .mask.revealed {
+            background-color: #e0f2f1;
+            color: #004d40;
+            font-weight: bold;
+        }
+        .btn-area {
+            margin-top: 15px;
+        }
+        button {
+            padding: 8px 16px;
+            font-size: 0.9rem;
+            background-color: #00796b;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #004d40;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>用途地域内の用途制限（暗記チェック）</h1>
+    <p style="font-size: 0.8rem; color: #666;">黒い部分をタップすると正解が表示されます</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>建築物の用途</th>
+                <th>第一種低層</th>
+                <th>第二種低層</th>
+                <th>田園住居</th>
+                <th>第一種中高層</th>
+                <th>第二種中高層</th>
+                <th>第一種住居</th>
+                <th>第二種住居</th>
+                <th>準住居</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="text-align: left;">住宅、共同住宅、寄宿舎、下宿</td>
+                <td><span class="mask" onclick="toggleMask(this)">◯</span></td>
+                <td><span class="mask" onclick="toggleMask(this)">◯</span></td>
+                <td><span class="mask" onclick="toggleMask(this)">◯</span></td>
+                <td><span class="mask" onclick="toggleMask(this)">◯</span></td>
+                <td><span class="mask" onclick="toggleMask(this)">◯</span></td>
+                <td><span class="mask" onclick="toggleMask(this)">◯</span></td>
+                <td><span class="mask" onclick="toggleMask(this)">◯</span></td>
+                <td><span class="mask" onclick="toggleMask(this)">◯</span></td>
+            </tr>
+            <tr>
+                <td style="text-align: left;">幼稚園、小学校、中学校、高等学校</td>
+                <td><span class="mask" onclick="toggleMask(this)">◯</span></td>
+                <td><span class="mask" onclick="toggleMask(this)">◯</span></td>
+                <td><span class="mask" onclick="toggleMask(this)">◯</span></td>
+                <td><span class="mask" onclick="toggleMask(this)">◯</span></td>
+                <td><span class="mask" onclick="toggleMask(this)">◯</span></td>
+                <td><span class="mask" onclick="toggleMask(this)">◯</span></td>
+                <td><span class="mask" onclick="toggleMask(this)">◯</span></td>
+                <td><span class="mask" onclick="toggleMask(this)">◯</span></td>
+            </tr>
+            <tr>
+                <td style="text-align: left;">大学、高等専門学校、専修学校</td>
+                <td><span class="mask" onclick="toggleMask(this)">✕</span></td>
+                <td><span class="mask" onclick="toggleMask(this)">✕</span></td>
+                <td><span class="mask" onclick="toggleMask(this)">✕</span></td>
+                <td><span class="mask" onclick="toggleMask(this)">◯</span></td>
+                <td><span class="mask" onclick="toggleMask(this)">◯</span></td>
+                <td><span class="mask" onclick="toggleMask(this)">◯</span></td>
+                <td><span class="mask" onclick="toggleMask(this)">◯</span></td>
+                <td><span class="mask" onclick="toggleMask(this)">◯</span></td>
+            </tr>
+            <tr>
+                <td style="text-align: left;">病院</td>
+                <td><span class="mask" onclick="toggleMask(this)">✕</span></td>
+                <td><span class="mask" onclick="toggleMask(this)">✕</span></td>
+                <td><span class="mask" onclick="toggleMask(this)">✕</span></td>
+                <td><span class="mask" onclick="toggleMask(this)">◯</span></td>
+                <td><span class="mask" onclick="toggleMask(this)">◯</span></td>
+                <td><span class="mask" onclick="toggleMask(this)">◯</span></td>
+                <td><span class="mask" onclick="toggleMask(this)">◯</span></td>
+                <td><span class="mask" onclick="toggleMask(this)">◯</span></td>
+            </tr>
+            <tr>
+                <td style="text-align: left;">老人ホーム、福祉ホーム</td>
+                <td><span class="mask" onclick="toggleMask(this)">◯</span></td>
+                <td><span class="mask" onclick="toggleMask(this)">◯</span></td>
+                <td><span class="mask" onclick="toggleMask(this)">◯</span></td>
+                <td><span class="mask" onclick="toggleMask(this)">◯</span></td>
+                <td><span class="mask" onclick="toggleMask(this)">◯</span></td>
+                <td><span class="mask" onclick="toggleMask(this)">◯</span></td>
+                <td><span class="mask" onclick="toggleMask(this)">◯</span></td>
+                <td><span class="mask" onclick="toggleMask(this)">◯</span></td>
+            </tr>
+            <tr>
+                <td style="text-align: left;">店舗・飲食店（150㎡以下）</td>
+                <td><span class="mask" onclick="toggleMask(this)">✕</span></td>
+                <td><span class="mask" onclick="toggleMask(this)">2F</span></td>
+                <td><span class="mask" onclick="toggleMask(this)">2F</span></td>
+                <td><span class="mask" onclick="toggleMask(this)">2F</span></td>
+                <td><span class="mask" onclick="toggleMask(this)">2F</span></td>
+                <td><span class="mask" onclick="toggleMask(this)">◯</span></td>
+                <td><span class="mask" onclick="toggleMask(this)">◯</span></td>
+                <td><span class="mask" onclick="toggleMask(this)">◯</span></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="btn-area">
+        <button onclick="resetAll()">すべて隠す</button>
+    </div>
+</div>
+
+<script>
+    function P(el) {
+        // タップされた要素のクラスを切り替え
+        el.classList.toggle('revealed');
+    }
+    function toggleMask(el) {
+        el.classList.toggle('revealed');
+    }
+    function resetAll() {
+        const masks = document.querySelectorAll('.mask');
+        masks.forEach(m => m.classList.remove('revealed'));
+    }
+</script>
+
+</body>
+</html>
